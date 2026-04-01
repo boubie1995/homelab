@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "automerge": false,
+  "helm-values": {
+    "fileMatch": ["helm/.+/values\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["apps/.+\\.yaml$", "argocd/.+\\.yaml$"]
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["minor", "major"],
+      "automerge": false
+    }
+  ]
+}
