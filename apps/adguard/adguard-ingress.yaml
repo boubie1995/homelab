@@ -1,0 +1,67 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard-http
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`adguard.home`)
+      kind: Rule
+      middlewares:
+        - name: redirect-https
+          namespace: default
+      services:
+        - name: adguard-external
+          port: 8080
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: adguard-tls
+  routes:
+    - match: Host(`adguard.home`)
+      kind: Rule
+      services:
+        - name: adguard-external
+          port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-external
+  namespace: default
+spec:
+  ports:
+    - port: 8080
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: adguard-external
+  namespace: default
+subsets:
+  - addresses:
+    - ip: 192.168.6.150
+    ports:
+    - port: 8080
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: adguard-tls
+  namespace: default
+spec:
+  secretName: adguard-tls
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - adguard.home

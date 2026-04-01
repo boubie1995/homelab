@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: windows-exporter
+  namespace: monitoring
+  labels:
+    release: monitoring
+spec:
+  jobName: windows_exporter
+  staticConfigs:
+    - targets:
+      - "100.113.105.51:9182"
+      - "192.168.7.40:9182"
