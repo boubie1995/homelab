@@ -1,0 +1,15 @@
+container_runtime: containerd
+
+agent:
+  acquisition:
+    - namespace: kube-system
+      podName: traefik-*
+      program: traefik
+  env:
+    - name: COLLECTIONS
+      value: "crowdsecurity/traefik crowdsecurity/linux"
+
+lapi:
+  env:
+    - name: ENROLL_KEY
+      value: ""  # add your crowdsec console enroll key later
