@@ -1,0 +1,6 @@
+global:
+  domain: argocd.home
+
+server:
+  ingress:
+    enabled: false
