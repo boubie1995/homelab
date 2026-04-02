@@ -4,7 +4,7 @@ metadata:
   name: windows-exporter
   namespace: monitoring
   labels:
-    release: monitoring
+    release: monitoring-stack
 spec:
   jobName: windows_exporter
   staticConfigs:
