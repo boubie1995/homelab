@@ -3,3 +3,20 @@ grafana:
     existingSecret: grafana-admin-secret
     userKey: admin-user
     passwordKey: admin-password
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    resources:
+      requests:
+        memory: 512Mi
+      limits:
+        memory: 1Gi
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        memory: 64Mi
+      limits:
+        memory: 128Mi

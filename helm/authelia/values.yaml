@@ -1,0 +1,36 @@
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    cert-manager.io/cluster-issuer: selfsigned-issuer
+  tls:
+    enabled: true
+
+configMap:
+  authentication_backend:
+    file:
+      enabled: true
+      path: /config/users_database.yml
+
+  session:
+    cookies:
+      - domain: authelia.home
+        authelia_url: https://authelia.home
+
+  storage:
+    local:
+      enabled: true
+
+  notifier:
+    filesystem:
+      enabled: true
+
+pod:
+  extraVolumes:
+    - name: users
+      configMap:
+        name: authelia-users
+  extraVolumeMounts:
+    - name: users
+      mountPath: /config/users_database.yml
+      subPath: users_database.yml
