@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: monitoring-redirect-https@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: monitoring-redirect-https@kubernetescrd,authelia-authelia@kubernetescrd
     cert-manager.io/cluster-issuer: selfsigned-issuer
 spec:
   tls:

@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: argocd-redirect-https@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: argocd-redirect-https@kubernetescrd,authelia-authelia@kubernetescrd
     cert-manager.io/cluster-issuer: selfsigned-issuer
 spec:
   tls:
