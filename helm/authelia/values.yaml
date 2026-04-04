@@ -14,7 +14,7 @@ configMap:
 
   session:
     cookies:
-      - domain: authelia.home
+      - domain: home
         authelia_url: https://authelia.home
 
   storage:
