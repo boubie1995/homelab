@@ -3,9 +3,9 @@ ingress:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     cert-manager.io/cluster-issuer: selfsigned-issuer
+  certManager: true
   tls:
     enabled: true
-  host: authelia.home.lab
 
 configMap:
   authentication_backend:
