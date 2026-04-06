@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`adguard.home`)
+    - match: Host(`adguard.home.lab.lab`)
       kind: Rule
       middlewares:
         - name: redirect-https
@@ -27,7 +27,7 @@ spec:
   tls:
     secretName: adguard-tls
   routes:
-    - match: Host(`adguard.home`)
+    - match: Host(`adguard.home.lab.lab`)
       kind: Rule
       services:
         - name: adguard-external

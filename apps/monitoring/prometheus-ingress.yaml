@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - prometheus.home
+    - prometheus.home.lab
     secretName: prometheus-tls
   rules:
-  - host: prometheus.home
+  - host: prometheus.home.lab
     http:
       paths:
       - path: /

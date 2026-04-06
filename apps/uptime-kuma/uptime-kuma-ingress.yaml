@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - uptime.home
+    - uptime.home.lab
     secretName: uptime-kuma-tls
   rules:
-  - host: uptime.home
+  - host: uptime.home.lab
     http:
       paths:
       - path: /

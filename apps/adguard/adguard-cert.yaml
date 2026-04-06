@@ -9,4 +9,4 @@ spec:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - adguard.home
+    - adguard.home.lab.lab

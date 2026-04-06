@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - argocd.home
+    - argocd.home.lab
     secretName: argocd-tls
   rules:
-  - host: argocd.home
+  - host: argocd.home.lab
     http:
       paths:
       - path: /

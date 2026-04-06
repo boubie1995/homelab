@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - grafana.home
+    - grafana.home.lab
     secretName: grafana-tls
   rules:
-  - host: grafana.home
+  - host: grafana.home.lab
     http:
       paths:
       - path: /

@@ -5,6 +5,7 @@ ingress:
     cert-manager.io/cluster-issuer: selfsigned-issuer
   tls:
     enabled: true
+  host: authelia.home.lab
 
 configMap:
   authentication_backend:
@@ -14,8 +15,8 @@ configMap:
 
   session:
     cookies:
-      - domain: home
-        authelia_url: https://authelia.home
+      - domain: home.lab
+        authelia_url: https://authelia.home.lab
 
   storage:
     local:
