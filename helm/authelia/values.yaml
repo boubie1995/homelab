@@ -36,7 +36,13 @@ pod:
       mountPath: /config/users_database.yml
       subPath: users_database.yml
   command: ["sleep", "infinity"]
-
+  probes:                                                                                                                          
+        liveness:                                                                                                                                                                                                                                           
+          enabled: false                                                                                                               
+        readiness:                                                                                                                                                                                                                                                   
+          enabled: false                                                                                                               
+        startup:                                                                                                                                                                                                                                                   
+          enabled: false
 persistence:
   enabled: true
   storageClass: local-path
