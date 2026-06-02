@@ -35,6 +35,7 @@ pod:
     - name: users
       mountPath: /config/users_database.yml
       subPath: users_database.yml
+  command: ["sleep", "infinity"]
 
 persistence:
   enabled: true
