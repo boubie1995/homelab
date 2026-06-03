@@ -35,13 +35,13 @@ pod:
     - name: users
       mountPath: /config/users_database.yml
       subPath: users_database.yml
-  probes:                                                                                                                          
-    liveness:                                                                                                                                                                                                                                           
-      enabled: false                                                                                                               
-    readiness:                                                                                                                                                                                                                                                   
-      enabled: false                                                                                                               
-    startup:                                                                                                                                                                                                                                                   
-      enabled: false
+  probes:
+    liveness:
+      disable: true
+    readiness:
+      disable: true
+    startup:
+      disable: true
 persistence:
   enabled: true
   storageClass: local-path
