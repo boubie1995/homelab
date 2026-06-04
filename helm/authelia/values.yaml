@@ -31,7 +31,7 @@ configMap:
 
   identity_validation:
     reset_password:
-      jwt:
+      secret:
         value: "89f28d7bff2b57173c34ee24df143f594bcca77d1b4e71650a83b1e43021527850f8f7517254b3e65db4b1d12377128b"        # openssl rand -hex 48
 
   notifier:
