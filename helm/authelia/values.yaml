@@ -14,13 +14,25 @@ configMap:
       path: /config/users_database.yml
 
   session:
+    # Pinned so ArgoCD's `helm template` (no `lookup`) stops regenerating it each sync.
+    encryption_key:
+      value: "a1002633a69ace9ace45556de094859fae3917cf988fedfef1d5b1c6280dcec1a8b1eaf5537ff47da521a3cdecfbbace"      # openssl rand -hex 48
     cookies:
       - domain: home.lab
         authelia_url: https://authelia.home.lab
 
   storage:
+    # Must stay stable: this key decrypts the SQLite DB on the PVC. If it changes,
+    # Authelia fails the schema check at startup and CrashLoopBackOffs.
+    encryption_key:
+      value: "2c8a0f32fada6d3ce0111c1318ba657a0bb0a5df753418da8d7a843cd55669f7aaa801dc8af7bba216b235b5021a4c32"      # openssl rand -hex 48
     local:
       enabled: true
+
+  identity_validation:
+    reset_password:
+      jwt:
+        value: "89f28d7bff2b57173c34ee24df143f594bcca77d1b4e71650a83b1e43021527850f8f7517254b3e65db4b1d12377128b"        # openssl rand -hex 48
 
   notifier:
     filesystem:
@@ -35,13 +47,6 @@ pod:
     - name: users
       mountPath: /config/users_database.yml
       subPath: users_database.yml
-  probes:
-    liveness:
-      disable: true
-    readiness:
-      disable: true
-    startup:
-      disable: true
 persistence:
   enabled: true
   storageClass: local-path
